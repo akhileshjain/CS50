@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            // TODO: Add code to check answers to questions
+            let ansDiv = document.createElement('div');
+            function answerClicked(event) {
+                if(event.target.id == 'a2') {
+                    document.getElementById('a2').style.background = 'green';
+                    ansDiv.innerText = 'Correct!'
+                } else {
+                    document.getElementById(event.target.id).style.background = 'red';
+                    ansDiv.innerText = 'Incorrect!'
+                }
+                    document.querySelector('.ans-box').append(ansDiv);
+            }
+
+            function onFreeResponseSubmit() {
+                let correctResponse = 'london';
+                let inputField = document.querySelector('#frAns');
+                let userResponse  = inputField.value;
+                if(userResponse.toLowerCase() == correctResponse) {
+                    ansDiv.innerText = 'Correct!';
+                    inputField.style.background = 'green';
+                } else {
+                    ansDiv.innerText = 'Incorrect!';
+                    inputField.style.background = 'red';
+                }
+                document.querySelector('.response-box').append(ansDiv);
+            }
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <!-- TODO: Add multiple choice question here -->
+                <h3>Who is the CEO of Google?</h3>
+                <div class="ans-box">
+                    <button id="a1" onclick="answerClicked(event)">Satya Nadella</button>
+                    <button id="a2"onclick="answerClicked(event)">Sundar Pichai</button>
+                    <button id="a3" onclick="answerClicked(event)">Mark Zuckerberg</button>
+                    <button id="a4" onclick="answerClicked(event)">Elon Musk</button>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <!-- TODO: Add free response question here -->
+                <h3>What is the capital of UK?</h3>
+                <div class="response-box">
+                    <input id="frAns" type="text"/>
+                    <button onclick="onFreeResponseSubmit()">Submit Response</button>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
